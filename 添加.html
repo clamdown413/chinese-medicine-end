@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let mecicine =
+            `人参 人发 卜芥 儿茶 八角 丁香 刀豆 三七 三棱 干姜 干漆 广白 广角 广丹 大黄 大戟 大枣 大蒜 大蓟 小蓟 小麦 小蘖 山丹 山茶 山奈 山香 山枣 山栀 山姜 山药 山楂 川羌 川军 川连 川朴 川乌 川柏 川谷 川断 川椒 川贝 川芎 马兰 马辛 马菜 马莲 马宝 马勃 马蔺 卫茅 子苓 天冬 天虫 天龙 天雄 天麻 元胡 元参 木瓜 木耳 木莲 木香 木通 木贼 木豆 木笔 木蓝 牙皂 瓦松 瓦韦 贝子 贝母 贝齿 牛至 牛黄 牛膝 牛蒡 见愁 手参 毛鸡 毛茛 毛姜 升麻 升登 丹砂 丹皮 丹参 乌茜 乌韭 乌药 乌头 乌桕 乌梅 方海 六曲 文元 文蛤 仁杞 双花 双皮 水花 水萍 水韭 水莽 水蛭 谷芽 羌活 远志 连翘 沙参 沙棘 沉香 没药 诃子 没石 陆英 灵芝 鸡头 阿胶 阿魏 陈皮 附子 青皮 青果 青蒿 青黛 苦木 苦参 苦菜 苦酒 茄根 苡仁 茅莓 茅根 枇杷 松节 松音 松脂 松塔 松醇 郁金 虎仗 虎刺 虎骨 果导 昆布 岩陀 知母 侧柏 乳香 灸草 佩兰 狗宝 狗脊 迭达 夜合 京墨 官桂 空青 卷柏 卷丹 油葱 法夏 泽兰 泽泻 泡参 降香 饴糖 细辛 玳瑁 珍珠 荆芥 茜草 荜拔 草乌 草果 茶油 茵陈 茯苓 茯神 荠菜 荠草 莎草 莽草 药芹 茴香 胡桃 胡椒 南星 南藤 枯矾 枯草 枯苓 柳叶 柳芽 柳枝 枳壳 枳实 桅子 枸杞 柿蒂 柿霜 厚朴 砂仁 砂糖 砒石 砒霜 轻粉 虻虫 胎盘 将军 钩藤 钩吻 香附 香橼 香嵩 香茹 香薷 重楼 胆木 胆矾 胆星 脉通 独活 信石 鬼珠 鬼白 鬼刺 鬼针 食盐 炮姜 姜黄 姜汁 姜皮 前胡 首乌 洪连 扁豆 扁蓄 扁蕾 神曲 蚤休 贯众 贯仲 秦艽 秦皮 莲子 莲肉 莲房 莲芯 莲须 莪术 荷叶 荷蒂 荷梗 桂心 桂枝 荸荠 莎草 恶实 桔梗 桃仁 桃汁 盐蛇 柴胡 崖香 党参 蚌花 铁屑 铝丹 蚕砂 射干 豹骨 狼毒 拳参 益智 海马 海龙 海芋 海藻 海蛰 浮石 浮萍 通天 通草 乌梢蛇 乌蔹莓 六和曲 六月雪 文旦皮 文冠木 火炭母 火麻仁 双蝴蝶 水安息 水花生 水车前 水龙骨 水牛角 水半夏 水扬梅 水蜈蚣 水蔓菁 巴豆霜 巴戟天 玉米须 功劳木 甘草节 甘草稍 甘露子 甘松香 古山龙 石灰华 石见穿 石吊兰 石决明 石龙芮 石钻子 石菖蒲 石椒草 石楠叶 石榴子 石榴皮 石硫磺 石钟乳 蛇胆汁 猫爪草 鹿角胶 鹿角霜 鹿衔草 旋复花 淮山药 淫羊藿 淡豆豉 密蒙花 款冬花 葫芦茶 葶苈子 紫河车 番泻叶 寒水石 腊梅花 蓖麻子 蒲公英 路路通 鼠曲草 蔓荆子 酸枣仁 罂粟壳 薏苡仁 薄荷油 颠茄草 蟛蜞菊 糯稻根 鹰不泊 十大功劳 王不留行 五指毛桃 罗布麻叶 臭梧桐叶 紫花杜鹃 紫背天葵 鹅不食草`
+        mecicine = mecicine.split(" ")
+        let place = ['兰州市', '嘉峪关市', '金昌市', '白银市', "天水市", "武威市", "张掖市", "平凉市", "酒泉市", "庆阳市", '定西市', '陇南市', "临夏回族自治州", "甘南藏族自治州"]
+
+        mecicine.forEach((item, index) => {
+            let id = index + 1
+            let number = Math.floor(Math.random() * (500 - 100 + 1) + 100);
+            let year = parseInt(Math.random() * (2022 - 2000 + 1) + 2000, 10);
+
+            let month = parseInt(Math.random() * (12 - 1 + 1) + 1, 10);
+            let day = parseInt(Math.random() * (28 - 1 + 1) + 1, 10);
+            let buy_price = (Math.random() * (20 - 10) + 10).toFixed(2);
+            let sale_price = (Math.random() * (30 - 20) + 20).toFixed(2);
+            let grow_place_index = parseInt(Math.random() * (13 - 0 + 1) + 0, 10);
+            let last_data = `${year}-${month}-${day}`
+            console.log(last_data);
+            let grow_place = place[grow_place_index]
+            let str = `id=${id}&name=${item}&number=${number}&last_data=${last_data}&buy_price=${buy_price}&sale_price=${sale_price}&grow_place=${grow_place}`
+            let xhr = new XMLHttpRequest();
+            xhr.open("post", "http://127.0.0.1:3000/insert")
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            xhr.addEventListener("readystatechange", function () {
+                console.log(this.responseText);
+            })
+            xhr.send(str)
+
+        })
+
+        let  options=[
+                        {
+                            value: '兰州市',
+                            label: '兰州市',
+                        }, {
+                            value: '嘉峪关市',
+                            label: '嘉峪关市',
+                        }, {
+                            value: '金昌市',
+                            label: '金昌市',
+                        }, {
+                            value: '白银市',
+                            label: '白银市',
+                        }, {
+                            value: '天水市',
+                            label: '天水市',
+                        }, {
+                            value: '武威市',
+                            label: '武威市',
+                        }, {
+                            value: '张掖市',
+                            label: '张掖市',
+                        }, {
+                            value: '平凉市',
+                            label: '平凉市',
+                        }, {
+                            value: '酒泉市',
+                            label: '酒泉市',
+                        }, {
+                            value: '定西市',
+                            label: '定西市',
+                        },{
+                            value: '陇南市',
+                            label: '陇南市',
+                        },{
+                            value: '临夏回族自治州',
+                            label: '临夏回族自治州',
+                        },{
+                            value: '甘南藏族自治州',
+                            label: '甘南藏族自治州',
+                        }
+                    ]
+    </script>
+</body>
+
+</html>

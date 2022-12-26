@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJhZG1pbiIsImxldmVsIjozLCJpYXQiOjE2NzEwMzAzMjAsImV4cCI6MTY3MTExNjcyMH0.BiPJfND1D89NlfLRkdkIK_46juXzJwAoWB-pAtqSlB0"
+        let xhr = new XMLHttpRequest();
+        xhr.open("post", "http://127.0.0.1:3000/selectAll")
+        xhr.setRequestHeader("Authorization", 'Bearer ' + token)
+        xhr.addEventListener("readystatechange", function () {
+            console.log(this.responseText);
+        })
+        xhr.send();
+    </script>
+</body>
+
+</html>
