@@ -1,7 +1,7 @@
 const db = require('./db')
 
-function insertMedicine(id, name, number, last_data, buy_price, sale_price, grow_place) {
-    let sqlstr = `insert into medicine values(${id},'${name}',${number},'${last_data}',${buy_price},${sale_price},'${grow_place}')`
+function insertMedicine(name, medicine_number, last_data, buy_price, sale_price, grow_place) {
+    let sqlstr = `insert into medicine (name,medicine_number,last_data,buy_price,sale_price,grow_place) values('${name}',${medicine_number},'${last_data}',${buy_price},${sale_price},'${grow_place}')`
     return new Promise((resolve, reject) => {
         db.query(sqlstr, function (err, result) {
             if (err) {
@@ -90,6 +90,20 @@ function search(string) {
         })
     })
 }
+
+function updated(id, name, medicine_number, last_data, buy_price, sale_price, grow_place) {
+    let sql = `update medicine set name = '${name}',medicine_number = ${medicine_number},last_data = '${last_data}',buy_price = ${buy_price},sale_price = ${sale_price},grow_place = '${grow_place}' where id = ${id}`
+    console.log(sql);
+    return new Promise((reslove, reject) => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                reslove(result)
+            }
+        })
+    })
+}
 module.exports = {
     insertMedicine,
     selectAll,
@@ -97,5 +111,6 @@ module.exports = {
     orderBySale,
     orderByProfit,
     deleteMedicine,
-    search
+    search,
+    updated
 }

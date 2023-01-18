@@ -24,6 +24,7 @@ var orderByProfitRouter = require('./routes/medicine/orderByProfit')
 var deleteMedicineRouter = require('./routes/medicine/delete')
 
 var searchRouter = require('./routes/medicine/search')
+var updatedRouter = require("./routes/medicine/updated")
 var app = express();
 
 // view engine setup
@@ -54,6 +55,7 @@ app.use('/orderBySale',orderBySaleRouter)
 app.use('/orderByProfit',orderByProfitRouter)
 app.use('/deleteMedicine',deleteMedicineRouter)
 app.use('/search',searchRouter)
+app.use("/updated",updatedRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

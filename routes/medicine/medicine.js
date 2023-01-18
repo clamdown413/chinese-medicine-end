@@ -10,7 +10,7 @@ router.post('/', async function (req, res) {
         res.json(
             {
                 code: 200,
-                message: "添加成功"
+                message: "修改"
             }
         )
     } catch (err) {
