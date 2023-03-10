@@ -6,7 +6,7 @@ router.post('/', async function (req, res) {
     let { name, medicine_number, last_data, buy_price, sale_price, grow_place } = req.body;
     console.log(last_data);
     try {
-        let result = await dbConn.insertMedicine(name, medicine_number, last_data, buy_price, sale_price, grow_place)
+        let result = await dbConn.insertOperate(name, medicine_number, last_data, buy_price, sale_price, grow_place)
         res.json(
             {
                 code: 200,

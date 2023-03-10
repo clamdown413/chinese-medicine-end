@@ -1,12 +1,11 @@
 var express = require('express');
-const dbConn = require('../../db/medicine')
+const dbConn = require('../../db/operate')
 var router = express.Router();
 
 router.post('/', async function (req, res) {
-    let { name, medicine_number, last_data, buy_price, sale_price, grow_place } = req.body;
-    console.log(last_data);
+    let { id, name, medicine_number, last_data, buy_price, sale_price, grow_place, operate_mouth, operate_id } = req.body;
     try {
-        let result = await dbConn.insertMedicine(name, medicine_number, last_data, buy_price, sale_price, grow_place)
+        await dbConn.insertMedicine(id, name, medicine_number, last_data, buy_price, sale_price, grow_place, operate_mouth, operate_id)
         res.json(
             {
                 code: 200,

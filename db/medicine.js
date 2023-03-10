@@ -104,6 +104,47 @@ function updated(id, name, medicine_number, last_data, buy_price, sale_price, gr
         })
     })
 }
+
+
+
+function insertOperate(operate_mouth, operate_id) {
+    let sql = `insert medicine ((operate_mouth,operate_id) values ${operate_mouth},${operate_id}`
+    return new Promise((reslove, reject) => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                reslove(result)
+            }
+        })
+    })
+}
+
+function updateOperate(id, operate_mouth,operate_id) {
+    let sql = `update medicine set opreate_id = '${operate_id}' set operate_mouth = '${operate_mouth}' where id = ${id}`
+    return new Promise((reslove, reject) => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                reslove(result)
+            }
+        })
+    })
+}
+
+function selectOperate(id){
+    let sql = `select operate_mouth,operate_id from medicine where id = ${id}`
+    return new Promise((reslove, reject) => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                reslove(result)
+            }
+        })
+    })
+}
 module.exports = {
     insertMedicine,
     selectAll,
@@ -112,5 +153,8 @@ module.exports = {
     orderByProfit,
     deleteMedicine,
     search,
-    updated
+    updated,
+    insertOperate,
+    updateOperate,
+    selectOperate
 }

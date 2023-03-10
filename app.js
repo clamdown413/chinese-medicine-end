@@ -25,6 +25,14 @@ var deleteMedicineRouter = require('./routes/medicine/delete')
 
 var searchRouter = require('./routes/medicine/search')
 var updatedRouter = require("./routes/medicine/updated")
+var insertTestRouter = require("./routes/test/InsertTest")
+var insertMedicineOperateRouter = require('./routes/medicine/insertOperate')
+var selectMedicineOperateRouter = require('./routes/medicine/selectOperate')
+var updateMedicineOperateRouter = require('./routes/medicine/updateOperate')
+
+var insertOperateRouter = require('./routes/operate/insert')
+var selectAllOperateRouter = require('./routes/operate/selectAll')
+var selectOperateRouter = require('./routes/operate/select')
 var app = express();
 
 // view engine setup
@@ -43,6 +51,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // }).unless({
 //   path: ['/login', '/register']
 // }))
+// app.use('/insertOperate', insertOperateRouter)
+
 
 app.use("/insert", insetrRouter)
 app.use("/register", registerRouter)
@@ -50,12 +60,21 @@ app.use("/login", loginRouter)
 app.use("/selectAll", selectAllRouter)
 app.use("/selectUserList", selectUserListRouter)
 app.use("/selectAdminList", selectAdminListRouter)
-app.use('/orderByBuy',orderByBuyRouter)
-app.use('/orderBySale',orderBySaleRouter)
-app.use('/orderByProfit',orderByProfitRouter)
-app.use('/deleteMedicine',deleteMedicineRouter)
-app.use('/search',searchRouter)
-app.use("/updated",updatedRouter)
+app.use('/orderByBuy', orderByBuyRouter)
+app.use('/orderBySale', orderBySaleRouter)
+app.use('/orderByProfit', orderByProfitRouter)
+app.use('/deleteMedicine', deleteMedicineRouter)
+app.use('/search', searchRouter)
+app.use("/updated", updatedRouter)
+app.use('/insertMedicineOperate', insertMedicineOperateRouter)
+app.use('/selectMedicineOperate', selectMedicineOperateRouter)
+app.use('/updateMedicineOperate', updateMedicineOperateRouter)
+app.use("/insertTest", insertTestRouter)
+
+app.use('/selectAllOperate', selectAllOperateRouter)
+app.use('/selectOperate', selectOperateRouter)
+app.use('/insertOperate',insertOperateRouter)
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
