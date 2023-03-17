@@ -15,7 +15,7 @@ var loginRouter = require('./routes/user/login');
 var selectAllRouter = require('./routes/medicine/selectAll');
 var selectUserListRouter = require('./routes/user/userList')
 var selectAdminListRouter = require('./routes/user/adminList')
-
+var getMedicineInfoByIdRouter = require('./routes/medicine/selectById')
 
 var orderByBuyRouter = require('./routes/medicine/orderByBuy')
 var orderBySaleRouter = require('./routes/medicine/orderBySale')
@@ -45,15 +45,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(expressJWT({
-//   secret: "medicine",
-//   algorithms: ['HS256']
-// }).unless({
-//   path: ['/login', '/register']
-// }))
-// app.use('/insertOperate', insertOperateRouter)
+app.use(expressJWT({
+  secret: "medicine",
+  algorithms: ['HS256'],
+  // getToken: req => { 
+  //   console.log(req.headers.token)
+  //   return "Bearer "+req.header.token
+  //  }
+}).unless({
+  path: ['/login', '/register']
+}))
 
 
+
+app.use('/insertOperate', insertOperateRouter)
 app.use("/insert", insetrRouter)
 app.use("/register", registerRouter)
 app.use("/login", loginRouter)
@@ -73,8 +78,8 @@ app.use("/insertTest", insertTestRouter)
 
 app.use('/selectAllOperate', selectAllOperateRouter)
 app.use('/selectOperate', selectOperateRouter)
-app.use('/insertOperate',insertOperateRouter)
-
+app.use('/insertOperate', insertOperateRouter)
+app.use('/getMedicineInfoById', getMedicineInfoByIdRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -85,7 +90,12 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  if (err.status === 401) {
+    return res.status(200).send({
+      code:401,
+      data:"token失效"
+    })
+  }
   // render the error page
   res.status(err.status || 500);
   res.render('error');

@@ -4,9 +4,8 @@ var router = express.Router();
 
 router.post('/', async function (req, res) {
     let { id } = req.body;
-    console.log(last_data);
     try {
-        let result = await dbConn.updateOperate(id,operate_mouth,operate_id)
+        let result = await dbConn.updateOperate(id, operate_mouth, operate_id)
         res.json(
             {
                 code: 200,

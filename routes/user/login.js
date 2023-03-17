@@ -16,7 +16,7 @@ router.post('/', async function (req, res) {
                 level: result[0].level
             }, SECRET_KEY,
             {
-                expiresIn: "10h",
+                expiresIn: "5h",
 
             },
 
@@ -25,7 +25,9 @@ router.post('/', async function (req, res) {
             code: 200,
             stats: 'success',
             data: {
-                level, token,username
+                level,
+                token: "Bearer " + token,
+                username
             }
         })
     } catch (err) {

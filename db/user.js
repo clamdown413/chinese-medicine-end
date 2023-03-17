@@ -16,7 +16,7 @@ function register(username, password, level) {
 }
 
 function login(username, password) {
-    let sql = `select * from user where username='${username}' and password='${password}'`
+    let sql = `select * from user where username='${username}' and password='${password}' and level = 1`
     return new Promise((resolve, reject) => {
         db.query(sql, function (err, result) {
             if (err) {
@@ -29,7 +29,7 @@ function login(username, password) {
 }
 
 function selectUserList() {
-    let sql = `select * from user where level = 1`
+    let sql = `select * from user where level = 1 OR level = 2`
     return new Promise((resolve, reject) => {
         db.query(sql, function (err, result) {
             if (err) {
@@ -42,7 +42,7 @@ function selectUserList() {
 }
 
 function selectAdminList() {
-    let sql = `select * from user where level = 2`
+    let sql = `select * from user where level = 3`
     return new Promise((resolve, reject) => {
         db.query(sql, function (err, result) {
             if (err) {

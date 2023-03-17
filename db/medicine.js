@@ -145,6 +145,18 @@ function selectOperate(id){
         })
     })
 }
+function getMedicineInfoById(id){
+    let sql = `select * from medicine where id = ${id}`
+    return new Promise((reslove, reject) => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                reslove(result)
+            }
+        })
+    })
+}
 module.exports = {
     insertMedicine,
     selectAll,
@@ -156,5 +168,6 @@ module.exports = {
     updated,
     insertOperate,
     updateOperate,
-    selectOperate
+    selectOperate,
+    getMedicineInfoById
 }

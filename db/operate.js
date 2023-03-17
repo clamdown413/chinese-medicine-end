@@ -27,8 +27,8 @@ function insertOperate(operate_id, operate_detail) {
     })
 }
 
-function selectOperate(operate_id,) {
-    let sqlstr = `select * from operate where id = '${operate_id}')`
+function selectOperate(operate_id) {
+    let sqlstr = `select operate_detail from operate where operate_id = ${operate_id}`
 
     return new Promise((resolve, reject) => {
         db.query(sqlstr, function (err, result) {

@@ -36,11 +36,11 @@
                 let grow_place_index = parseInt(Math.random() * (13 - 0 + 1) + 0, 10);
                 let last_data = `${year}-${month}-${day}`
                 let grow_place = place[grow_place_index]
-                let months = [gen(2, 4), gen(5, 10), gen(5, 10), gen(5, 10), gen(5, 10), gen(10, 12)]
+                let months = [gen(2, 4), gen(5, 10), gen(5, 10), gen(5, 10), gen(5, 10), gen(5, 10), gen(10, 12)]
 
                 months.sort((a, b) => { return a - b })
 
-                let caozuos = [0, gen(1, 7), gen(1, 7), gen(1, 7), gen(1, 7), gen(1, 7), 8]
+                let caozuos = [1, gen(2, 6), gen(2, 6), gen(2, 6), 7, 8, 9]
 
                 let str = `id=${id}&name=${item}&medicine_number=${number}&last_data=${last_data}&buy_price=${buy_price}&sale_price=${sale_price}&grow_place=${grow_place}&operate_mouth=${JSON.stringify(months)}&operate_id=${JSON.stringify(caozuos)}`
                 console.log(str)

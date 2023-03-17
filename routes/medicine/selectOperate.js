@@ -4,9 +4,8 @@ var router = express.Router();
 
 router.post('/', async function (req, res) {
     let { id } = req.body;
-    console.log(last_data);
     try {
-        let result = await dbConn.insertOperate(id)
+        let result = await dbConn.selectOperate(id)
         res.json(
             {
                 code: 200,
