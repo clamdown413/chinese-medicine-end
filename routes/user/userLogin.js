@@ -5,14 +5,17 @@ const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'medicine';
 router.post('/', async function (req, res) {
     let { username, password } = req.body;
+    console.log(username, password);
     try {
-        let result = await dbConn.login(username, password)
+        let result = await dbConn.userLogin(username, password)
         let level = result[0].level
+        if (result.length <= 0) {
+        }
         let token = jwt.sign(
             {
                 username: result[0].username,
                 password: result[0].password,
-                level: result[0].level,
+                level: result[0].level
             }, SECRET_KEY,
             {
                 expiresIn: "5h",
@@ -28,7 +31,6 @@ router.post('/', async function (req, res) {
                 token: "Bearer " + token,
                 username,
                 nickname: result[0].nickname
-
             }
         })
     } catch (err) {

@@ -1,4 +1,6 @@
 var expressJWT = require('express-jwt');
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -11,6 +13,7 @@ var insetrRouter = require('./routes/medicine/insert');
 
 var registerRouter = require('./routes/user/register');
 var loginRouter = require('./routes/user/login');
+var userLoginRouter = require("./routes/user/userLogin")
 
 var selectAllRouter = require('./routes/medicine/selectAll');
 var selectUserListRouter = require('./routes/user/userList')
@@ -29,11 +32,19 @@ var insertTestRouter = require("./routes/test/InsertTest")
 var insertMedicineOperateRouter = require('./routes/medicine/insertOperate')
 var selectMedicineOperateRouter = require('./routes/medicine/selectOperate')
 var updateMedicineOperateRouter = require('./routes/medicine/updateOperate')
-
+var updateNickNameRouter = require("./routes/user/updateNickName")
 var insertOperateRouter = require('./routes/operate/insert')
 var selectAllOperateRouter = require('./routes/operate/selectAll')
 var selectOperateRouter = require('./routes/operate/select')
 var app = express();
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Authorization,X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, PUT, DELETE')
+  res.header('Allow', 'GET, POST, PATCH, OPTIONS, PUT, DELETE')
+  next();
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,7 +64,7 @@ app.use(expressJWT({
   //   return "Bearer "+req.header.token
   //  }
 }).unless({
-  path: ['/login', '/register']
+  path: ['/login', '/userLogin', '/register']
 }))
 
 
@@ -62,6 +73,7 @@ app.use('/insertOperate', insertOperateRouter)
 app.use("/insert", insetrRouter)
 app.use("/register", registerRouter)
 app.use("/login", loginRouter)
+app.use('/userLogin', userLoginRouter)
 app.use("/selectAll", selectAllRouter)
 app.use("/selectUserList", selectUserListRouter)
 app.use("/selectAdminList", selectAdminListRouter)
@@ -80,20 +92,24 @@ app.use('/selectAllOperate', selectAllOperateRouter)
 app.use('/selectOperate', selectOperateRouter)
 app.use('/insertOperate', insertOperateRouter)
 app.use('/getMedicineInfoById', getMedicineInfoByIdRouter)
+
+app.use('/updateNickName', updateNickNameRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// 处理token
+
+
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   if (err.status === 401) {
     return res.status(200).send({
-      code:401,
-      data:"token失效"
+      code: 401,
+      data: "token失效"
     })
   }
   // render the error page

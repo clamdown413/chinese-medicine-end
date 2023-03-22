@@ -1,7 +1,7 @@
 const db = require('./db')
 
-function insertMedicine(id, name, medicine_number, last_data, buy_price, sale_price, grow_place, operate_mouth, operate_id) {
-    let sqlstr = `insert into medicine (id,name,medicine_number,last_data,buy_price,sale_price,grow_place,operate_mouth,operate_id) values(${id},'${name}',${medicine_number},'${last_data}',${buy_price},${sale_price},'${grow_place}','${operate_mouth}','${operate_id}')`
+function insertMedicine(name, medicine_number, last_data, buy_price, sale_price, grow_place, operate_mouth, operate_id) {
+    let sqlstr = `insert into medicine (name,medicine_number,last_data,buy_price,sale_price,grow_place,operate_mouth,operate_id) values('${name}',${medicine_number},'${last_data}',${buy_price},${sale_price},'${grow_place}','${operate_mouth}','${operate_id}')`
     return new Promise((resolve, reject) => {
         db.query(sqlstr, function (err, result) {
             if (err) {
