@@ -2,8 +2,8 @@ const db = require('./db')
 const jwt = require('jsonwebtoken');
 
 //注册
-function register(username, password, level) {
-    let sql = `insert into user values('${username}', '${password}','${level}')`
+function register(username, password, level,nickname) {
+    let sql = `insert into user values('${username}', '${password}','${level}','${nickname}')`
     return new Promise((resolve, reject) => {
         db.query(sql, function (err, result) {
             if (err) {
@@ -76,11 +76,38 @@ function updateNickName(username, nickname) {
         })
     });
 }
+function deleteUser(username) {
+    let sql = `delete from user  where username = '${username}'`
+    return new Promise((resolve, reject) => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(result)
+            }
+        })
+    });
+}
+
+function updateUser(username, password, level,nickname) {
+    let sql = `update user set password = '${password}', level = '${level}', nickname = '${nickname}' where username = '${username}'`
+    return new Promise((resolve, reject) => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(result)
+            }
+        })
+    })
+}
 module.exports = {
     register,
     login,
     userLogin,
     selectUserList,
     selectAdminList,
-    updateNickName
+    updateNickName,
+    deleteUser,
+    updateUser
 }

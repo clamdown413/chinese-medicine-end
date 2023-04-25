@@ -14,6 +14,8 @@ var insetrRouter = require('./routes/medicine/insert');
 var registerRouter = require('./routes/user/register');
 var loginRouter = require('./routes/user/login');
 var userLoginRouter = require("./routes/user/userLogin")
+var deleteUserRouter = require("./routes/user/deleteUser")
+var updateUserRouter = require("./routes/user/updateUser")
 
 var selectAllRouter = require('./routes/medicine/selectAll');
 var selectUserListRouter = require('./routes/user/userList')
@@ -74,6 +76,8 @@ app.use("/insert", insetrRouter)
 app.use("/register", registerRouter)
 app.use("/login", loginRouter)
 app.use('/userLogin', userLoginRouter)
+app.use("/deleteUser",deleteUserRouter)
+
 app.use("/selectAll", selectAllRouter)
 app.use("/selectUserList", selectUserListRouter)
 app.use("/selectAdminList", selectAdminListRouter)
@@ -92,7 +96,7 @@ app.use('/selectAllOperate', selectAllOperateRouter)
 app.use('/selectOperate', selectOperateRouter)
 app.use('/insertOperate', insertOperateRouter)
 app.use('/getMedicineInfoById', getMedicineInfoByIdRouter)
-
+app.use("/updateUser",updateUserRouter)
 app.use('/updateNickName', updateNickNameRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

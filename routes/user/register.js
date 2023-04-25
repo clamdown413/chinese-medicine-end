@@ -3,9 +3,9 @@ const dbConn = require('../../db/user')
 var router = express.Router();
 
 router.post('/', async function (req, res) {
-    let { username, password, level } = req.body;
+    let { username, password, level,nickname } = req.body;
     try {
-        await dbConn.register(username, password, level)
+        await dbConn.register(username, password, level,nickname)
         res.json({
             code: 200,
             stats: 'success'
